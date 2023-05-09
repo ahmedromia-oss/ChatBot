@@ -2,6 +2,7 @@ from flask import session
 from flask_socketio import emit, join_room, leave_room
 from .. import socketio
 from ..MainAI.chatbot import Bot
+from ..NNCODE.MainNN import tag_sentences
 
 @socketio.on('joined', namespace='/chat')
 def joined(message):
@@ -19,6 +20,8 @@ def text(message):
     The message is sent to all people in the room."""
     room = session.get('room')
     emit('message', {'msg': message['msg']}, room=room)
+   
+    print(tag_sentences([(message['msg'])]))
 
 @socketio.on('botResponse', namespace='/chat')
 def BotResponse(message):

@@ -88,8 +88,8 @@ model.compile(loss='categorical_crossentropy',
 es_callback = keras.callbacks.EarlyStopping(monitor='val_loss', patience=3)
 
 
-history = model.fit(x_train_padded, y_train_categoricals, epochs=1, 
-                    batch_size=2028, validation_data=(x_val_padded, y_val_categoricals), 
+history = model.fit(x_train_padded, y_train_categoricals, epochs=5, 
+                    batch_size=256, validation_data=(x_val_padded, y_val_categoricals), 
                     callbacks=[es_callback])
 
 x_test_seqs = sentence_tokenizer.texts_to_sequences(x_test)
@@ -100,7 +100,10 @@ y_test_padded = keras.preprocessing.sequence.pad_sequences(y_test_seqs, padding=
 y_test_categoricals = keras.utils.to_categorical(y_test_padded)
 samples = [
     "Brown refused to testify.",
-    "Brown sofas are on sale.",
+    
+]
+samples2 = [
+  "hello my friend"
 ]
 def tag_sentences(sentences):
   sentences_seqs = sentence_tokenizer.texts_to_sequences(sentences)
@@ -128,5 +131,6 @@ def tag_sentences(sentences):
 
   return sentence_tags
 
-tagged_sample_sentences = tag_sentences(samples)
-print(tagged_sample_sentences[0])
+
+
+
