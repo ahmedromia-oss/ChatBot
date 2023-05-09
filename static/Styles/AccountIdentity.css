@@ -1,0 +1,92 @@
+body {
+    background-color: rgb(2, 2, 20);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5% 5% 0.5% 5%;
+    border-radius: 30PX;
+    font-size: 100%;
+}
+
+    a:hover {
+        background-color: blueviolet
+    }
+
+nav {
+    direction: rtl;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    
+    /* justify-content: space-around; */
+    background-color: rgb(34, 34, 35);
+    width: 97%;
+    padding: 1%;
+    position: absolute;
+    top: 0px;
+    /* left:25%; */
+}
+
+
+
+.LoginForm {
+    
+    position: absolute;
+    top: 25%;
+    right: 25%;
+    border-radius: 25px;
+    border-color: green;
+    background-color: rgb(34, 34, 35);
+    text-align: center;
+    width: 50%;
+}
+
+input[type = password] {
+    outline: none;
+    font-size: 100%;
+    border: solid 3px;
+    ;
+    border-radius: 25px;
+    border-color: blueviolet;
+    color: black;
+    width: 50%;
+    /* height: 40%; */
+    padding: 2%;
+    margin: 3%;
+    color: white;
+    background-color: transparent;
+}
+
+input[type=text] {
+    outline: none;
+    background-color: transparent;
+    font-size: 100%;
+    padding: 2%;
+    margin: 3%;
+    border: solid 3px;
+    
+    border-radius: 25px;
+    border-color: blueviolet;
+    color: black;
+    width: 50%;
+    height: 40%;
+    color: white;
+}
+
+input[type=submit]:hover {
+    background-color: blueviolet;
+}
+
+input[type=submit] {
+    font-size: 100%;
+    width: 25%;
+    border: solid 3px;
+    border-radius: 30px;
+    border-color: blueviolet;
+    background-color: transparent;
+    color: white;
+    padding: 1%;
+    margin: 3%;
+}

@@ -1,0 +1,50 @@
+<!-- <html>
+    <head>
+        <title>Flask-SocketIO-Chat</title>
+    </head>
+    <body>
+        <h1>Flask-SocketIO-Chat</h1>
+        <form method="POST">
+            {{ form.name.label }}: {{ form.name() }} {% for error in form.name.errors %}{{ error }}{% endfor %}<br>
+            {{ form.submit() }}
+        </form>
+    </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/Styles/AccountIdentity.css">
+
+</head>
+<body>
+    
+        <div class="LoginForm">
+            <h1 style="color: White;">Enter ChatBot</h1>
+            <ul style="list-style:none" id="LoginErrors">
+                {% for error in form.name.errors %}<li style="color:red">{{ error }}</li>{% endfor %}
+            </ul>
+            <form id="Login" method="POST">
+            
+                <!-- <!-- {{ form.name() }} {% for error in form.name.errors %}{{ error }}{% endfor %}<br> -->
+                {{ form.hidden_tag() }}
+                
+                <input name="name" placeholder="User Name" type="text">
+                <br>
+               
+            <input type="submit" value="Enter Room">
+                
+            </form>
+        </div>
+  
+   
+   
+    
+</body>
+</html>
