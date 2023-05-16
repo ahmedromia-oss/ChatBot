@@ -75,7 +75,7 @@ def response(user_response):
         myresult = tag_sentences([(user_response)])
         print(myresult)
         for f in myresult[0]:
-            if ((f[1] == "verb" or f[1] == "pro" or f[1] == "det") or len(myresult[0])<2):
+            if ((f[1] == "verb" or f[1] == "pron" or f[1] == "det") or len(myresult[0])<2):
                 sent_tokens.pop(-1)
                 break
 
