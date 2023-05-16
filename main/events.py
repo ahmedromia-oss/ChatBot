@@ -21,7 +21,6 @@ def text(message):
     room = session.get('room')
     emit('message', {'msg': message['msg']}, room=room)
    
-    print(tag_sentences([(message['msg'])]))
 
 @socketio.on('botResponse', namespace='/chat')
 def BotResponse(message):

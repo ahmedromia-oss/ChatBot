@@ -18,13 +18,15 @@ tagged_sentences = treebank.tagged_sents(tagset='universal') +\
                    brown.tagged_sents(tagset='universal') +\
                    conll2000.tagged_sents(tagset='universal')
 
-print(tagged_sentences[0])
-print(f"Dataset size: {len(tagged_sentences)}")
+# print(tagged_sentences)
+# print(f"Dataset size: {len(tagged_sentences)}")
 
 sentences, sentence_tags = [], []
 
 for s in tagged_sentences:
   sentence, tags = zip(*s)
+  
+  
   sentences.append(list(sentence))
   sentence_tags.append(list(tags))
   
@@ -61,7 +63,7 @@ y_train_categoricals = keras.utils.to_categorical(y_train_padded)
 idx = np.argmax(y_train_categoricals[0][0])
 y_val_categoricals = keras.utils.to_categorical(y_val_padded)
 num_tokens = len(sentence_tokenizer.word_index) + 1
-print(num_tokens)
+# print(num_tokens)
 embedding_dim = 128
 
 # For the output layer. The number of classes corresponds to the 
@@ -88,7 +90,7 @@ model.compile(loss='categorical_crossentropy',
 es_callback = keras.callbacks.EarlyStopping(monitor='val_loss', patience=3)
 
 
-history = model.fit(x_train_padded, y_train_categoricals, epochs=5, 
+history = model.fit(x_train_padded, y_train_categoricals, epochs=6, 
                     batch_size=256, validation_data=(x_val_padded, y_val_categoricals), 
                     callbacks=[es_callback])
 

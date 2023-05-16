@@ -9,6 +9,7 @@ import warnings
 warnings.filterwarnings('ignore')
 import speech_recognition as sr
 
+from ..NNCODE.MainNN import tag_sentences
 
 
 import nltk
@@ -55,16 +56,41 @@ def response(user_response):
     TfidfVec = TfidfVectorizer(tokenizer=LemNormalize, stop_words='english')
     tfidf = TfidfVec.fit_transform(sent_tokens)
     vals = cosine_similarity(tfidf[-1], tfidf)
-    idx=vals.argsort()[0][-2]
+    
     flat = vals.flatten()
+   
     flat.sort()
-    req_tfidf = flat[-2]
+    i = 0
+    idx = 0
+    x = random.randint(-5 , -2)
+    while((flat[x] < 0.2 or flat[x] > 0.9) and i < 30):
+        x = random.randint(-5 , -2)
+        
+        i = i + 1    
+    idx=vals.argsort()[0 , x]
+    req_tfidf = flat[x]
+
     if(req_tfidf==0):
         robo_response=robo_response+"I am sorry! I don't understand you"
+        myresult = tag_sentences([(user_response)])
+        print(myresult)
+        for f in myresult[0]:
+            if ((f[1] == "verb" or f[1] == "pro" or f[1] == "det") or len(myresult[0])<2):
+                sent_tokens.pop(-1)
+                break
+
         return robo_response
     else:
         robo_response = robo_response+sent_tokens[idx]
+        myresult = tag_sentences([(user_response)])
+        print(myresult)
+        for f in myresult[0]:
+            if ((f[1] == "verb" or f[1] == "pron" or f[1] == "det") or len(myresult[0])<2):
+                sent_tokens.pop(-1)
+                break
+
         return robo_response
+    
 
 def Bot(msg):
 
@@ -102,7 +128,4 @@ def ListenToMe():
                 print(query)
                 return Bot(query)
             except:
-                return "Not clear"
-
-
-
+                return "Not Clear"
